@@ -4,12 +4,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@Qualifier("sgtPeppers")
-public class SgtPeppers implements CompactDisc {
+@Qualifier("internationalVillager")
+public class InternationalVillager implements CompactDisc {
 
-	private String title = "Sgt. Pepper's Lonely Hearts Club";
-	private String artist = "The Beatles";
+	private String title = "International Villager";
+	private String artist = "Yo Yo Honey Singh";
 
+	@Override
 	public void play() {
 		System.out.println("Playing " + title + " by " + artist);
 	}

@@ -14,16 +14,16 @@ import com.psl.soundsystem.configurations.CDPlayerConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CDPlayerConfig.class)
-public class CDPlayerTest {
+public class DVDPlayerTest {
 	@Rule
 	public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
 
 	@Autowired
-	@Qualifier("cdPlayer")
-	private MediaPlayer cdPlayer;
+	@Qualifier("dvdPlayer")
+	private MediaPlayer dvdPlayer;
 
 	@Autowired
-	@Qualifier("sgtPeppers")
+	@Qualifier("internationalVillager")
 	private CompactDisc cd;
 
 	@Test
@@ -32,16 +32,15 @@ public class CDPlayerTest {
 	}
 
 	@Test
-	public void mediaPlayerNotBeNull() {
-		Assert.assertNotNull(cdPlayer);
+	public void mediaPlayerShouldNotBeNull() {
+		Assert.assertNotNull(dvdPlayer);
 	}
 
 	@Test
-	public void playSgtPeppers() {
-		((CDPlayer) cdPlayer).setCd(cd);
-		String expectedMessage = "Playing Sgt. Pepper's Lonely Hearts Club by The Beatles\n";
-		cdPlayer.play();
-		Assert.assertEquals(expectedMessage, systemOutRule.getLogWithNormalizedLineSeparator());
+	public void playInternationVillger() {
+		String expectedString = "Playing International Villager by Yo Yo Honey Singh\n";
+		((DVDPlayer) dvdPlayer).setCd(cd);
+		dvdPlayer.play();
+		Assert.assertEquals(expectedString, systemOutRule.getLogWithNormalizedLineSeparator());
 	}
-
 }
